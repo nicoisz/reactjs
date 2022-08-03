@@ -1,38 +1,52 @@
-.App {
-  text-align: center;
+.Front-End-Test---Home-view {
+  height: 1024px;
+  padding: 0 0 98px;
+  background-color: #fcfcfc;
+
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Rectangle-2-Copy {
+  /*height: 114px;*/
+  margin: 0 0 0px;
+  padding: 44px 0 42px 0;
+  box-shadow: 0 1px 4px 0 rgba(0, 21, 41, 0.12);
+  background-image: linear-gradient(to bottom, #ececec -32%, #fff 124%);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+img.HACKER-NEWS {
+  width: 208px;
+  height: 28px;
+  object-fit: contain;
+  font-family: Baskerville;
+  font-size: 28px;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  color: #3b3b3b;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Rectangle {
+  width: 250px;
+  height: 90px;
+  margin: 38px 40px 30px 150px;
+  padding: 0 0 0 26px;
+  opacity: 0.8;
+  border-radius: 6px;
+  border: solid 1px #979797;
+  background-color: #fff;
+}
+
+.container{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  background-color: #61dafb;
 }
 
-.App-link {
-  color: #61dafb;
+.container > .Rectangle{
+  background-color: red;
+  box-sizing: border-box;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
