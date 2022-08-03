@@ -2,7 +2,6 @@
   height: 1024px;
   padding: 0 0 98px;
   background-color: #fcfcfc;
-
 }
 
 .Rectangle-2-Copy {
@@ -28,7 +27,7 @@ img.HACKER-NEWS {
 }
 
 .Rectangle {
-  width: 250px;
+  width: 450px;
   height: 90px;
   margin: 38px 40px 30px 150px;
   padding: 0 0 0 26px;
@@ -38,15 +37,25 @@ img.HACKER-NEWS {
   background-color: #fff;
 }
 
-.container{
+.container {
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
   background-color: #61dafb;
 }
 
-.container > .Rectangle{
+.container > .Rectangle {
   background-color: red;
   box-sizing: border-box;
 }
 
+.footer {
+  position: sticky;
+  bottom: 0;
+  margin: 20 0 20 0;
+}
+
+.pagination{
+  display: "flex";
+  justify-content: "center"
+}
