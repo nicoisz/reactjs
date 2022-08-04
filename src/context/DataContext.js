@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import axios from 'axios';
 import { url } from '../utils/helpers';
-import { defineIfIsFavourite } from '../utils/helpers';
+import { defineIfIsFavourite,defineIfExistsFavourite } from '../utils/helpers';
 
 export const DataContext = React.createContext();
 
@@ -22,8 +22,11 @@ export const DataProvider = ({children}) => {
   }, []);
 
   const handleFavourite = useCallback(async (post) => {
-    setFav(fav.push(post));
-    localStorage.setItem('myFav', JSON.stringify([...fav, post]));
+    console.log("favourite exist", defineIfExistsFavourite(post.objectID))
+    if(!defineIfExistsFavourite(post.objectID)){
+      setFav(fav.push(post));
+      localStorage.setItem('myFav', JSON.stringify([...fav, post]));
+    }
   }, []);
 
   // const handleFavourite = useCallback(async (post) => {
