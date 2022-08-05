@@ -1,17 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Select from "react-select";
 
 import { DataContext } from "../../context";
 import { options } from '../../utils/const';
 
 export const DropdownSelector = () => {
-  const { query, handleQuery } = useContext(DataContext);
+  
+  const { queryValue, handleQuery } = useContext(DataContext);
 
   return (
     <div className="dropdown-selector">
       <Select 
         placeholder="Select Option"
-        value={options.text}
+        defaultValue={options[queryValue-1]}
         options={options}
         onChange={handleQuery}
         getOptionLabel={({icon, text}) => (

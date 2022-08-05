@@ -6,39 +6,39 @@ import { DropdownSelector } from '../dropdownSelector';
 import { DataContext } from '../../context';
 import { defineIfIsFavourite } from '../../utils/helpers';
 
-export const HitsList = () => {
-  const { posts, fav, handleFavourite } = useContext(DataContext);
+export const HitsList = ({showFavPages, data,handleFavourite}) => {
+  //const { posts, handleFavourite } = useContext(DataContext);
 
-  const handleFavs = useCallback((post) => () => {
-    console.log(post)
+  const handleFavs = useCallback((post) => () => {   
     handleFavourite(post)
   }, [])
   
   return (
     <div>
-      <div className="first-container">
+      {!showFavPages && <div className="first-container">
         <DropdownSelector />
-      </div>
+      </div> }
       <div className="second-container">
-        {posts.map((post) => (
-          <div className="rectangle" key={post.objectID}>
+        {data.map((value) => (
+          
+          <div className="rectangle" key={value.objectID}>
             <div>
-              <UpperText />
+              <UpperText />              
               <div className="event-driven-state-m">
-                <h4>{post.story_title}</h4>
+                <h4>{value.story_title}</h4>
               </div>
             </div>
             <div className="small-rectangle">
-              <button onClick={handleFavs(post)}>
-                <img src={defineIfIsFavourite(post.objectID)} />
+              <button onClick={handleFavs(value)}>
+                <img src={defineIfIsFavourite(value.objectID)} />
               </button>
             </div>
           </div>
         ))}
       </div>
-      <footer className="footer">
+      {!showFavPages &&<footer className="footer">
         <BottomPagination  />
-      </footer>
+      </footer>}
     </div>
   );
 };

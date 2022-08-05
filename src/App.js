@@ -1,19 +1,24 @@
 import { HitsList, TopButtons, TopHeader } from "./components";
-import { DataProvider } from "./context";
 import "./App.css";
+import { useCallback, useContext } from "react";
+import { DataContext } from './context';
 
 export const App = () => {
+  const { fav, posts, showFavPages, handleFavourite } = useContext(DataContext);
+  console.log("asdasd", fav, posts)
   return (
-    <DataProvider>
-      <div className="Front-End-Test---Home-view">
-        <div className="header">
-          <TopHeader />
-        </div>
-        <div className="body">
-          <TopButtons />
-          <HitsList />
-        </div>
+    <div className="Front-End-Test---Home-view">
+      <div className="header">
+        <TopHeader />
       </div>
-    </DataProvider>
+      <div className="body">
+        <TopButtons />
+        {showFavPages ?
+          <HitsList showFavPages={showFavPages} data={fav} handleFavourite={handleFavourite} /> :
+          <HitsList showFavPages={showFavPages} data={posts} handleFavourite={handleFavourite} />
+        }
+
+      </div>
+    </div>
   );
 };

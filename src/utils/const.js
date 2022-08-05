@@ -1,6 +1,6 @@
 import AngularIcon from "../images/icons/image-138.png";
-import VueIcon from "../images/icons/image-140.png";
-import ReactJsIcon from "../images/icons/image-141.png";
+import ReactJsIcon from "../images/icons/image-140.png";
+import  VueIcon from "../images/icons/image-141.png";
 
 export const URL = `https://hn.algolia.com/api/v1/search_by_date`;
 
@@ -18,6 +18,6 @@ export const options = [
     {
       value: 3,
       text: "Vuejs",
-      icon: <img src={VueIcon} alt="Vuejs" />,
+      icon: <img src={VueIcon} alt="Vuejs"/>,
     },
 ];
