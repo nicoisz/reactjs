@@ -1,12 +1,14 @@
 import { useCallback, useContext } from "react";
-import { DataContext } from '../../context';
+import { DataContext } from "../../context";
 
 export const TopButtons = () => {
-
   const { handleFavPage } = useContext(DataContext);
-  const handlePage = useCallback((value) => () => {    
-    handleFavPage(value)
-  }, [])
+  const handlePage = useCallback(
+    (value) => () => {
+      handleFavPage(value);
+    },
+    []
+  );
 
   return (
     <div className="in-line-buttons">

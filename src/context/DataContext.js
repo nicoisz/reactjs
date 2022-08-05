@@ -1,28 +1,37 @@
-import React, { useCallback, useEffect, useState } from 'react';
-import axios from 'axios';
-import { getQuery, url } from '../utils/helpers';
-import { defineIfIsFavourite,defineIfExistsFavourite,getQueryValue } from '../utils/helpers';
+import React, { useCallback, useEffect, useState } from "react";
+import axios from "axios";
+import { getQuery, url } from "../utils/helpers";
+import {
+  defineIfIsFavourite,
+  defineIfExistsFavourite,
+  getQueryValue,
+} from "../utils/helpers";
 
 export const DataContext = React.createContext();
 
-export const DataProvider = ({children}) => {
-
+export const DataProvider = ({ children }) => {
   //useState
   const [page, setPage] = useState(0);
-  const [query, setQuery] = useState(localStorage.getItem('filter') || 'Angular');
-  const [queryValue, setQueryValue] = useState(getQueryValue(localStorage.getItem('filter') || ''));
+  const [query, setQuery] = useState(
+    localStorage.getItem("filter") || "Angular"
+  );
+  const [queryValue, setQueryValue] = useState(
+    getQueryValue(localStorage.getItem("filter") || "")
+  );
   const [posts, setPosts] = useState([]);
-  const [settings, setSettings] = useState('');
-  const [fav, setFav] = useState(JSON.parse(localStorage.getItem('myFav')) || []);
+  const [settings, setSettings] = useState("");
+  const [fav, setFav] = useState(
+    JSON.parse(localStorage.getItem("myFav")) || []
+  );
   const [showFavPages, setShowFavPage] = useState(false);
-  
+
   //custom Handlers
   const handlerPagination = useCallback((action) => {
-    setPage((prev) => prev + action)
+    setPage((prev) => prev + action);
   }, []);
 
-  const handleQuery = useCallback(({text}) => {
-    localStorage.setItem('filter', text);
+  const handleQuery = useCallback(({ text }) => {
+    localStorage.setItem("filter", text);
     setQuery(text);
     setQueryValue(getQueryValue(text));
   }, []);
@@ -31,64 +40,55 @@ export const DataProvider = ({children}) => {
     //let newFav = [];
 
     const data = fav.filter((obj, pos, arr) => {
-      return arr
-        .map(mapObj => mapObj.objectID)
-        .indexOf(obj.objectID) == pos;
+      return arr.map((mapObj) => mapObj.objectID).indexOf(obj.objectID) == pos;
     });
-    console.log(data.forEach(element => {
-        console.log("data",element.objectID)
-    }))
+    console.log(
+      data.forEach((element) => {
+        console.log("data", element.objectID);
+      })
+    );
 
-    if(!defineIfExistsFavourite(post.objectID)){
-      console.log("[DC] handleFavourite if", [...data, post],fav.push(post))
+    if (!defineIfExistsFavourite(post.objectID)) {
+      console.log("[DC] handleFavourite if", [...data, post], fav.push(post));
       const newFav = [...data, post];
-      console.log("newFav", newFav)
-      setFav(newFav);//fav.push(post));
-      console.log("newFav", newFav,[...data, post])
-      localStorage.setItem('myFav', JSON.stringify(newFav));
+      console.log("newFav", newFav);
+      setFav(newFav); //fav.push(post));
+      console.log("newFav", newFav, [...data, post]);
+      localStorage.setItem("myFav", JSON.stringify(newFav));
     } else {
-      const newFav = data.filter((value) => value.objectID !== post.objectID )
-      console.log(newFav.forEach(ele=>{
-        console.log("remover",ele.objectID)
-      }))
+      const newFav = data.filter((value) => value.objectID !== post.objectID);
+      console.log(
+        newFav.forEach((ele) => {
+          console.log("remover", ele.objectID);
+        })
+      );
 
-      console.log("newfav", newFav)
-      setFav(newFav)
+      console.log("newfav", newFav);
+      setFav(newFav);
       //localStorage.removeItem('myFav');
-       
-      localStorage.setItem('myFav',JSON.stringify(newFav));
-       //localStorage.setItem(JSON.stringify([...fav, post]));
+
+      localStorage.setItem("myFav", JSON.stringify(newFav));
+      //localStorage.setItem(JSON.stringify([...fav, post]));
     }
   }, []);
 
   const handleFavPage = useCallback((showValue) => {
-      setShowFavPage(showValue)
+    setShowFavPage(showValue);
   }, []);
-
-  // const handleFavourite = useCallback(async (post) => {
-  //   let newFav = [];
-  //   if(!defineIfExistsFavourite(post.objectID)){
-  //     newFav = [...fav, post]; //todo guardar  arreglo + nuevo post 
-  //     newFav.push(post); 
-  //   } else {
-  //     newFav = fav.filter((value) => value.objectID !== post.objectID )
-  //   }
-  //   console.log("newfav", newFav)
-  //   setFav(newFav);
-  //   localStorage.setItem('myFav', JSON.stringify(newFav));
-  // }, []);
 
   const fetchData = async () => {
     try {
-      const { data: { hits, ...opt } } = await axios.get(url(page, query));
+      const {
+        data: { hits, ...opt },
+      } = await axios.get(url(page, query));
       if (opt) {
         setSettings(opt);
       }
       setPosts(hits);
     } catch {
-      throw 'error'
+      throw "error";
     }
-  }
+  };
 
   useEffect(() => {
     fetchData();
@@ -105,8 +105,8 @@ export const DataProvider = ({children}) => {
     handlerPagination,
     handleQuery,
     handleFavourite,
-    handleFavPage
-  }
+    handleFavPage,
+  };
 
-  return <DataContext.Provider value={value}>{children}</DataContext.Provider>
-}
+  return <DataContext.Provider value={value}>{children}</DataContext.Provider>;
+};

@@ -14,13 +14,13 @@
   background-image: linear-gradient(to bottom, #ececec -32%, #fff 124%);
 }
 
-.top-buttons{
+.top-buttons {
   width: 120px;
   height: 31px;
   border-radius: 2px;
   border: solid 1px #d6d6d6;
 }
-.top-buttons:active{
+.top-buttons:active {
   width: 120px;
   height: 31px;
   padding: 3px 39px 0 40px;
@@ -56,21 +56,21 @@
   color: #606060;
 }
 
-.in-line-buttons{
+.in-line-buttons {
   display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: center;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
 }
 
-.dropdown-selector{
+.dropdown-selector {
   width: 240px;
   border-radius: 4px;
   border: solid 1px #2e2e2e;
   background-color: #fff;
 }
 
-.first-container{
+.first-container {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -79,18 +79,17 @@
   margin-left: 150px;
 }
 
-.second-container{
+.second-container {
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
   margin-left: 110px;
 }
 
-.option span{
-  margin-left: 5px; 
+.option span {
+  margin-left: 5px;
   padding-bottom: 55px;
 }
-
 
 img.HACKER-NEWS {
   width: 208px;
@@ -119,7 +118,7 @@ img.HACKER-NEWS {
   justify-content: space-between;
 }
 
-.small-rectangle{
+.small-rectangle {
   position: relative;
   width: 68px;
   height: 90px;
@@ -128,8 +127,6 @@ img.HACKER-NEWS {
   border: solid 1px #606060;
   background-color: #606060;
 }
-
-
 
 .event-driven-state-m {
   width: 440px;
@@ -159,6 +156,6 @@ img.HACKER-NEWS {
   color: #767676;
 }
 
-.container-above{
+.container-above {
   position: relative;
 }
