@@ -27,7 +27,8 @@ export const DataProvider = ({ children }) => {
 
   //custom Handlers
   const handlerPagination = useCallback((action) => {
-    setPage((prev) => prev + action);
+    console.log(action)
+    setPage(action);
   }, []);
 
   const handleQuery = useCallback(({ text }) => {
@@ -36,9 +37,9 @@ export const DataProvider = ({ children }) => {
     setQueryValue(getQueryValue(text));
   }, []);
 
-  const handleFavourite = useCallback(async (post) => {
-    //let newFav = [];
-
+  const handleFavourite = useCallback(async (post,query) => {
+    console.log("push query", query,queryValue)
+    post._tags.push(query);
     const data = fav.filter((obj, pos, arr) => {
       return arr.map((mapObj) => mapObj.objectID).indexOf(obj.objectID) == pos;
     });
@@ -77,11 +78,14 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   const fetchData = async () => {
+   
     try {
       const {
         data: { hits, ...opt },
       } = await axios.get(url(page, query));
+     
       if (opt) {
+       
         setSettings(opt);
       }
       setPosts(hits);
