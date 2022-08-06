@@ -2,7 +2,7 @@
   /*width: 1440px;*/
   height: 1024px;
   padding: 0 0 98px;
-  background-color: #fcfcfc;
+  background-color: white;
 }
 
 .rectangle-2-Copy {
@@ -26,9 +26,11 @@
   padding: 3px 39px 0 40px;
   border-radius: 2px;
   border: solid 1px #1797ff;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
-.All {
+.active {
   width: 19px;
   height: 28px;
   font-family: Roboto;
@@ -42,7 +44,7 @@
   color: #1797ff;
 }
 
-.My-faves {
+.inactive {
   width: 65px;
   height: 28px;
   font-family: Roboto;
@@ -61,6 +63,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
+  margin-left: 150px;
 }
 
 .dropdown-selector {
@@ -81,9 +84,9 @@
 
 .second-container {
   display: flex;
-  flex-direction: column;
-  flex-wrap: nowrap;
-  margin-left: 110px;
+  flex-wrap: wrap;
+  flex-direction: row-reverse;
+  margin-left: 110px !important;
 }
 
 .option span {
@@ -106,7 +109,8 @@ img.HACKER-NEWS {
 }
 
 .rectangle {
-  width: 550px;
+  flex: 1 1 300;
+  max-width: 550px;
   height: 90px;
   margin: 38px 150px 30px 40px;
   padding: 0 0 0 26px;
@@ -115,23 +119,50 @@ img.HACKER-NEWS {
   border: solid 1px #979797;
   background-color: #fff;
   display: flex;
-  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.big-rectangle{
+  position: relative;
+  width: 480px;
+}
+.top-elements{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
 }
 
 .small-rectangle {
   position: relative;
-  width: 68px;
+  width: 70px !important;
   height: 90px;
-  /*opacity: 0.06;*/
   border-radius: 6px;
-  border: solid 1px #606060;
-  background-color: #606060;
+  background-color: rgb(96, 96, 96, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock{
+  width: 16px;
+  height: 16px;
+  margin: 14px 0 6px 0;
+  object-fit: contain;
+}
+
+.heart {
+  width: 24px;
+  height: 22px;
+  position: absolute;
+  z-index: 1 !important;
 }
 
 .event-driven-state-m {
   width: 440px;
   height: 20px;
-  margin: 6px 0 0;
+  margin: 0 0 0 0;
   font-family: Roboto;
   font-size: 14px;
   font-weight: 500;
@@ -140,6 +171,11 @@ img.HACKER-NEWS {
   line-height: 1.43;
   letter-spacing: 0.25px;
   color: #6b6b6b;
+
+}
+.event-driven-state-m >h4{
+  margin: 2%;
+  font-size: 1rem;
 }
 
 .hours-ago-by-autho {
@@ -158,4 +194,11 @@ img.HACKER-NEWS {
 
 .container-above {
   position: relative;
+}
+
+.footer{  
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
 }

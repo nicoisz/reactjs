@@ -27,7 +27,6 @@ export const DataProvider = ({ children }) => {
 
   //custom Handlers
   const handlerPagination = useCallback((action) => {
-    console.log(action)
     setPage(action);
   }, []);
 
@@ -37,39 +36,27 @@ export const DataProvider = ({ children }) => {
     setQueryValue(getQueryValue(text));
   }, []);
 
-  const handleFavourite = useCallback(async (post,query) => {
-    console.log("push query", query,queryValue)
-    post._tags.push(query);
+  const handleFavourite = useCallback(async (post, query) => {
+
+    //no inserta duplicados
     const data = fav.filter((obj, pos, arr) => {
       return arr.map((mapObj) => mapObj.objectID).indexOf(obj.objectID) == pos;
     });
-    console.log(
-      data.forEach((element) => {
-        console.log("data", element.objectID);
-      })
-    );
+
 
     if (!defineIfExistsFavourite(post.objectID)) {
-      console.log("[DC] handleFavourite if", [...data, post], fav.push(post));
-      const newFav = [...data, post];
-      console.log("newFav", newFav);
-      setFav(newFav); //fav.push(post));
-      console.log("newFav", newFav, [...data, post]);
+
+      post._tags.push(query);
+      const oldFav = JSON.parse(localStorage.getItem("myFav"));
+      const newFav = [...oldFav, post];
+      setFav(newFav); //fav.push(post))
       localStorage.setItem("myFav", JSON.stringify(newFav));
+
     } else {
-      const newFav = data.filter((value) => value.objectID !== post.objectID);
-      console.log(
-        newFav.forEach((ele) => {
-          console.log("remover", ele.objectID);
-        })
-      );
-
-      console.log("newfav", newFav);
+      const oldFav = JSON.parse(localStorage.getItem("myFav"));
+      const newFav = oldFav.filter((value) => value.objectID !== post.objectID);
       setFav(newFav);
-      //localStorage.removeItem('myFav');
-
       localStorage.setItem("myFav", JSON.stringify(newFav));
-      //localStorage.setItem(JSON.stringify([...fav, post]));
     }
   }, []);
 
@@ -78,14 +65,14 @@ export const DataProvider = ({ children }) => {
   }, []);
 
   const fetchData = async () => {
-   
+
     try {
       const {
         data: { hits, ...opt },
       } = await axios.get(url(page, query));
-     
+
       if (opt) {
-       
+
         setSettings(opt);
       }
       setPosts(hits);

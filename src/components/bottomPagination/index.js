@@ -8,7 +8,6 @@ export const BottomPagination = () => {
   const { handlerPagination, settings } = useContext(DataContext);
   const handleChange = useCallback((event, value) => {
     handlerPagination(value);
-    console.log("handlechange", value)
     window.scroll(0, 0);
   }, []);
 
