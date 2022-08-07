@@ -1,4 +1,4 @@
-import image from "../../images/hacker-news/hacker-news.png";
+import image from '../../images/hacker-news/hacker-news.png';
 
 export const TopHeader = () => {
   return (

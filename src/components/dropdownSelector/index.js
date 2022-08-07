@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from "react";
-import Select from "react-select";
+import React, { useContext, useEffect } from 'react';
+import Select from 'react-select';
 
-import { DataContext } from "../../context";
-import { options } from "../../utils/const";
+import { DataContext } from '../../context';
+import { options } from '../../utils/const';
 
 export const DropdownSelector = () => {
   const { queryValue, handleQuery } = useContext(DataContext);

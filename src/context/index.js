@@ -1,1 +1,1 @@
-export { DataContext, DataProvider } from "./DataContext";
+export { DataContext, DataProvider } from './DataContext';

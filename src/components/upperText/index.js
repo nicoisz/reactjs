@@ -1,4 +1,4 @@
-import clock from "../../images/icons/iconmonstr-time-2_2@3x.png";
+import clock from '../../images/icons/iconmonstr-time-2_2@3x.png';
 
 export const UpperText = () => (
   <div className="top-elements">

@@ -1,8 +1,8 @@
-import React,{ useCallback, useContext } from "react";
-import Pagination from "@mui/material/Pagination";
-import Stack from "@mui/material/Stack";
+import React, { useCallback, useContext } from 'react';
+import Pagination from '@mui/material/Pagination';
+import Stack from '@mui/material/Stack';
 
-import { DataContext } from "../../context";
+import { DataContext } from '../../context';
 
 export const BottomPagination = () => {
   const { handlerPagination, settings } = useContext(DataContext);

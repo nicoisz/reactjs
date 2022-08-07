@@ -6,8 +6,7 @@
 }
 
 .rectangle-2-Copy {
-  /*width: 1440px;
-  height: 114px;*/
+  width: 100%;
   margin: 0 0 70px 0;
   padding: 44px 0 42px 150px;
   box-shadow: 0 1px 4px 0 rgba(0, 21, 41, 0.12);
@@ -63,7 +62,7 @@
   flex-direction: row;
   flex-wrap: nowrap;
   justify-content: center;
-  margin-left: 150px;
+  margin-left: 50px;
 }
 
 .dropdown-selector {
@@ -83,10 +82,14 @@
 }
 
 .second-container {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row-reverse;
-  margin-left: 110px !important;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(600px, 2fr));
+  justify-content: center;
+  /*align-content: center;
+  gap: 4px;
+  grid-auto-flow: column;*/
+  margin-left: 110px;
+  margin-right: 110px;
 }
 
 .option span {
@@ -109,8 +112,9 @@ img.HACKER-NEWS {
 }
 
 .rectangle {
-  flex: 1 1 300;
+  flex: 1 1 200;
   max-width: 550px;
+  width: 100%;
   height: 90px;
   margin: 38px 150px 30px 40px;
   padding: 0 0 0 26px;
@@ -123,11 +127,11 @@ img.HACKER-NEWS {
   flex-wrap: nowrap;
 }
 
-.big-rectangle{
+.big-rectangle {
   position: relative;
   width: 480px;
 }
-.top-elements{
+.top-elements {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -145,7 +149,7 @@ img.HACKER-NEWS {
   justify-content: center;
 }
 
-.clock{
+.clock {
   width: 16px;
   height: 16px;
   margin: 14px 0 6px 0;
@@ -171,9 +175,8 @@ img.HACKER-NEWS {
   line-height: 1.43;
   letter-spacing: 0.25px;
   color: #6b6b6b;
-
 }
-.event-driven-state-m >h4{
+.event-driven-state-m > h4 {
   margin: 2%;
   font-size: 1rem;
 }
@@ -196,7 +199,7 @@ img.HACKER-NEWS {
   position: relative;
 }
 
-.footer{  
+.footer {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
